@@ -1,2 +1,2 @@
-pub mod service;
-pub use service::Service;
+pub mod service_model;
+pub use service_model::Service;

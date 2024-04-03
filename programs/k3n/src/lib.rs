@@ -2,7 +2,9 @@ use anchor_lang::prelude::*;
 mod contexts;
 mod service;
 use contexts::*;
-use service::service::PaymentType;
+use service::service_model::PaymentType;
+mod util;
+use util::*;
 
 declare_id!("7EsEmSeRQ98ni2qed55nfMFYyD1omasLPsRn7jeWL7jF");
 
@@ -19,14 +21,20 @@ pub mod k3n {
         payment_method: PaymentType,
         description: String,
     ) -> Result<()> {
-        ctx.accounts.internal_create_service(
+        let _create_service = ctx.accounts.internal_create_service(
             kol,
             platform,
             service_fee,
             currency,
             payment_method,
             description,
-        )
+        );
+
+        emit!(CreatedServiceEvent {
+            data: 5,
+            label: [1, 2, 3, 4, 5],
+        });
+        Ok(())
     }
 }
 

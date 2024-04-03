@@ -1,6 +1,6 @@
-use anchor_lang::{accounts::signer, prelude::*};
+use anchor_lang::prelude::*;
 
-use crate::service::{service::PaymentType, Service};
+use crate::service::{service_model::PaymentType, Service};
 
 #[derive(Accounts)]
 pub struct CreateService<'info> {
