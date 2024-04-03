@@ -1,12 +1,12 @@
 use anchor_lang::prelude::*;
 
-use crate::service::{service_model::PaymentType, Service};
+use crate::model::{service_model::PaymentType, Service};
 
 #[derive(Accounts)]
 pub struct CreateService<'info> {
     #[account(mut)]
     pub hirer: Signer<'info>,
-    #[account(init, payer = hirer, space = Service::INIT_SPACE)]
+    #[account(init, payer = hirer, space = 8 + Service::INIT_SPACE)]
     pub service: Account<'info, Service>,
     pub system_program: Program<'info, System>,
 }

@@ -1,8 +1,8 @@
 use anchor_lang::prelude::*;
 mod contexts;
-mod service;
+mod model;
 use contexts::*;
-use service::service_model::PaymentType;
+use model::service_model::PaymentType;
 mod util;
 use util::*;
 
@@ -37,10 +37,3 @@ pub mod k3n {
         Ok(())
     }
 }
-
-// Error handling
-// #[error]
-// pub enum Error {
-//     #[msg("Insufficient funds")]
-//     InsufficientFunds,
-// }
