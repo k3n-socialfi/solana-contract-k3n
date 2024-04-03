@@ -6,7 +6,7 @@ mod states;
 declare_id!("8gc7QHvsreuPTUrYpJ7dJxr6c8UB8kapeLW9Uoot8G1g");
 
 #[program]
-pub mod anchor_escrow {
+pub mod escrow {
     use super::*;
 
     pub fn initialize(
@@ -18,7 +18,6 @@ pub mod anchor_escrow {
         ctx.accounts
             .initialize_escrow(seed, &ctx.bumps, initializer_amount, taker_amount)?;
         ctx.accounts.deposit(initializer_amount)
-        ctx.accounts.
     }
 
     pub fn cancel(ctx: Context<Cancel>) -> Result<()> {
