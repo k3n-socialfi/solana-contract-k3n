@@ -3,6 +3,19 @@ use anchor_lang::prelude::*;
 use anchor_lang::solana_program::program::invoke;
 use anchor_lang::solana_program::system_instruction;
 
+#[derive(Accounts)]
+pub struct CompleteService<'info> {
+    #[account(mut, has_one = hirer)]
+    pub service: Account<'info, Service>,
+    /// CHECK: This is safe because we're explicitly checking the hirer's pubkey in the function
+    #[account(signer)]
+    pub hirer: AccountInfo<'info>,
+    /// The recipient of the SOL transfer.
+    #[account(mut)]
+    pub kol: AccountInfo<'info>,
+    pub system_program: Program<'info, System>,
+}
+
 impl<'info> CompleteService<'info> {
     pub fn internal_complete_service(&mut self) -> Result<()> {
         // Verify that the signer is the hirer
@@ -30,16 +43,4 @@ impl<'info> CompleteService<'info> {
 
         Ok(())
     }
-}
-
-#[derive(Accounts)]
-pub struct CompleteService<'info> {
-    #[account(mut, has_one = hirer)]
-    pub service: Account<'info, Service>,
-    /// CHECK: This is safe because we're explicitly checking the hirer's pubkey in the function
-    #[account(signer)]
-    pub hirer: AccountInfo<'info>,
-    /// The recipient of the SOL transfer.
-    #[account(mut)]
-    pub kol: AccountInfo<'info>,
 }

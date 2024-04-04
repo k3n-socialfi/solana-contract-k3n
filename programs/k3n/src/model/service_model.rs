@@ -1,4 +1,4 @@
-use anchor_lang::{prelude::*, solana_program::account_info::Account};
+use anchor_lang::prelude::*;
 
 #[account]
 #[derive(InitSpace)]
