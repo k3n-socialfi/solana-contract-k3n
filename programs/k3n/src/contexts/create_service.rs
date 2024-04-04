@@ -29,6 +29,7 @@ impl<'info> CreateService<'info> {
             kol,
             hirer: self.hirer.key(),
             description,
+            is_completed: false,
         });
         Ok(())
     }

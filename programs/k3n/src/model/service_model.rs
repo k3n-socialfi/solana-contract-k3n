@@ -13,7 +13,7 @@ pub struct Service {
     pub hirer: Pubkey,
     #[max_len(200)]
     pub description: String,
-    //pub is_completed: bool,
+    pub is_completed: bool,
     //pub service_state: ServiceState,
 }
 
@@ -23,8 +23,3 @@ pub enum PaymentType {
     Milestone,
     //Won { winner: Pubkey },
 }
-
-// impl Space for SerService::INIT_SPACEvice {
-//     // First 8 Bytes are Discriminator (u64)
-//     const INIT_SPACE: usize = 8 + 8 + 1 + 32 + 32 + 32 + 8 + 8;
-// }

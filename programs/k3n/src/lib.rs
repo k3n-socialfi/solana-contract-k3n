@@ -4,12 +4,14 @@ mod model;
 use contexts::*;
 use model::service_model::PaymentType;
 mod util;
+use contexts::CompleteService;
 use util::*;
 
 declare_id!("7EsEmSeRQ98ni2qed55nfMFYyD1omasLPsRn7jeWL7jF");
 
 #[program]
 pub mod k3n {
+
     use super::*;
 
     pub fn create_service(
@@ -34,6 +36,11 @@ pub mod k3n {
             data: 5,
             label: [1, 2, 3, 4, 5],
         });
+        Ok(())
+    }
+
+    pub fn complete_service(ctx: Context<CompleteService>) -> Result<()> {
+        let _make_complete = ctx.accounts.internal_complete_service();
         Ok(())
     }
 }
