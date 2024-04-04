@@ -1,4 +1,4 @@
-use anchor_lang::prelude::*;
+use anchor_lang::{prelude::*, solana_program::account_info::Account};
 
 #[account]
 #[derive(InitSpace)]
@@ -9,6 +9,7 @@ pub struct Service {
     #[max_len(20)]
     pub currency: String,
     pub payment_method: PaymentType,
+    //pub kol: Pubkey,
     pub kol: Pubkey,
     pub hirer: Pubkey,
     #[max_len(200)]
