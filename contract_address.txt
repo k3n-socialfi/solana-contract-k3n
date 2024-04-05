@@ -1,0 +1,2 @@
+solana devnet
+contract address: CkfkNjFHCpEB7xiXvzRbtPGdK9wiim8U1KKyTWS6YHY1
