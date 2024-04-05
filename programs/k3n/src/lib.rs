@@ -17,14 +17,16 @@ pub mod k3n {
     pub fn create_service(
         ctx: Context<CreateService>,
         kol: Pubkey,
+        service_name: String,
         platform: String,
         service_fee: u64,
         currency: String,
         payment_method: PaymentType,
         description: String,
     ) -> Result<()> {
-        let _create_service = ctx.accounts.internal_create_service(
+        let created_service = ctx.accounts.internal_create_service(
             kol,
+            service_name.clone(),
             platform,
             service_fee,
             currency,
@@ -33,8 +35,10 @@ pub mod k3n {
         );
 
         emit!(CreatedServiceEvent {
-            data: 5,
-            label: [1, 2, 3, 4, 5],
+            service_created: created_service.unwrap(),
+            service_name,
+            kol,
+            hier: ctx.accounts.hirer.key(),
         });
         Ok(())
     }

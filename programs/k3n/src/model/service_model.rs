@@ -4,6 +4,8 @@ use anchor_lang::prelude::*;
 #[derive(InitSpace)]
 pub struct Service {
     #[max_len(50)]
+    pub service_name: String,
+    #[max_len(50)]
     pub platform: String,
     pub service_fee: u64,
     #[max_len(20)]

@@ -7,6 +7,7 @@ skip-lint = false
 [programs.localnet]
 escrow = "8gc7QHvsreuPTUrYpJ7dJxr6c8UB8kapeLW9Uoot8G1g"
 k3n = "7EsEmSeRQ98ni2qed55nfMFYyD1omasLPsRn7jeWL7jF"
+soulbound = "8hWteE8pQPnnMyCiCiPT6TRzc7nKDyE2KQy3pG8Vze3w"
 
 [registry]
 url = "https://api.apr.dev"

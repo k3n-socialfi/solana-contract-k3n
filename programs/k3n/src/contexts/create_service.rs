@@ -1,6 +1,5 @@
-use anchor_lang::prelude::*;
-
 use crate::model::{service_model::PaymentType, Service};
+use anchor_lang::prelude::*;
 
 #[derive(Accounts)]
 pub struct CreateService<'info> {
@@ -15,13 +14,15 @@ impl<'info> CreateService<'info> {
     pub fn internal_create_service(
         &mut self,
         kol: Pubkey,
+        service_name: String,
         platform: String,
         service_fee: u64,
         currency: String,
         payment_method: PaymentType,
         description: String,
-    ) -> Result<()> {
+    ) -> Result<Pubkey> {
         self.service.set_inner(Service {
+            service_name,
             platform,
             service_fee,
             currency,
@@ -31,6 +32,6 @@ impl<'info> CreateService<'info> {
             description,
             is_completed: false,
         });
-        Ok(())
+        Ok(self.service.key())
     }
 }
